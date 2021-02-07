@@ -1,6 +1,4 @@
 
-import java.util.ArrayList;
-
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -14,16 +12,11 @@ public class Shaper
     private Line line4;
     private Line line5;
     private Line line6;
-		private Color color;
-		// private Group rectangle;
-		Line [] rectangle;
-		Line [] triangle;
-Line [] hexagon;
+    private Color color;
 
     public Shaper() {
 	// initialize mainGroup
 	mainGroup = new Group();
-	// rectangle = new Group();
 	setHexagon();
 	color = Color.RED;
     }
@@ -47,11 +40,8 @@ Line [] hexagon;
 	line2 = new Line(100, 250, 400, 250);
 	line3 = new Line(400, 250, 400, 70);
 	line4 = new Line(100, 70, 400, 70);
-  Line[] rectangle = {line1, line2, line3, line4};
 	resetColor();
-	// rectangle.getChildren().addAll(line1, line2, line3, line4);
-	// mainGroup.getChildren().addAll(line1, line2, line3, line4);
-	mainGroup.getChildren().addAll(rectangle);
+	mainGroup.getChildren().addAll(line1, line2, line3, line4);
     }
 
     private void resetColor() {
