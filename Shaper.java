@@ -25,6 +25,15 @@ public class Shaper
 	return mainGroup;
     }
 
+    private void resetColor() {
+	line1.setStroke(color);
+	line2.setStroke(color);
+	line3.setStroke(color);
+	line4.setStroke(color);
+	line5.setStroke(color);
+	line6.setStroke(color);
+    }
+
     public void setTriangle() {
 	mainGroup.getChildren().removeAll(line1, line2, line3, line4, line5, line6);
 	line1 = new Line(100, 70, 100, 250);
@@ -42,15 +51,6 @@ public class Shaper
 	line4 = new Line(100, 70, 400, 70);
 	resetColor();
 	mainGroup.getChildren().addAll(line1, line2, line3, line4);
-    }
-
-    private void resetColor() {
-	line1.setStroke(color);
-	line2.setStroke(color);
-	line3.setStroke(color);
-	line4.setStroke(color);
-	line5.setStroke(color);
-	line6.setStroke(color);
     }
 
     public void setHexagon() {
