@@ -6,40 +6,41 @@
  */
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
+import javafx.scene.shape.Polygon;
 
 public class Shaper
 {
     // mainGroup holds the shape that is displayed.
     private Group mainGroup;
     private Color colour;
-    private Line[] rectangle = new Line[4];
-    private Line[] triangle = new Line[3];
-    private Line[] hexagon = new Line[6];
+    private Polygon rectangle = new Polygon();
+    private Polygon triangle = new Polygon();
+    private Polygon hexagon = new Polygon();
+    // private Line[] rectangle = new Line[4];
+    // private Line[] triangle = new Line[3];
+    // private Line[] hexagon = new Line[6];
 
     public Shaper() {
 	// initialise mainGroup and colour
 	mainGroup = new Group();
 	colour = Color.RED;
 	createShapes();
-	resetAllShapesColour();
 	setHexagon();
     }
 
     public void setTriangle() {
-	removeShapes();
-	mainGroup.getChildren().addAll(triangle);
+	mainGroup.getChildren().clear();
+	mainGroup.getChildren().add(triangle);
     }
 
     public void setRectangle() {
-	removeShapes();
-	mainGroup.getChildren().addAll(rectangle);
+	mainGroup.getChildren().clear();
+	mainGroup.getChildren().add(rectangle);
     }
 
     public void setHexagon() {
-	// For coordinates see: https://www.mathopenref.com/coordpolycalc.html
-	removeShapes();
-	mainGroup.getChildren().addAll(hexagon);
+	mainGroup.getChildren().clear();
+	mainGroup.getChildren().add(hexagon);
     }
 
     public Group getMainGroup() {
@@ -52,8 +53,7 @@ public class Shaper
 	} else if (newColour.equalsIgnoreCase("green")) {
 	    colour = Color.GREEN;
 
-	} else if (newColour.equalsIgnoreCase("grey")
-		|| newColour.equalsIgnoreCase("gray")) {
+	} else if (newColour.equalsIgnoreCase("grey")) {
 	    colour = Color.GREY;
 	}
 	resetAllShapesColour();
@@ -61,38 +61,28 @@ public class Shaper
 
     private void createShapes() {
 
-	rectangle[0] = new Line(100, 70, 100, 250);
-	rectangle[1] = new Line(100, 250, 400, 250);
-	rectangle[2] = new Line(400, 250, 400, 70);
-	rectangle[3] = new Line(100, 70, 400, 70);
+	triangle.getPoints()
+		.addAll(new Double[] { 100.0, 70.0, 100.0, 250.0, 400.0, 250.0 });
 
-	triangle[0] = new Line(100, 70, 100, 250);
-	triangle[1] = new Line(100, 250, 400, 250);
-	triangle[2] = new Line(400, 250, 100, 70);
+	rectangle.getPoints().addAll(new Double[] { 100.0, 70.0, 100.0, 250.0, 400.0,
+		250.0, 400.0, 70.0 });
 
-	hexagon[0] = new Line(295, 82, 205, 82);
-	hexagon[1] = new Line(205, 82, 160, 160);
-	hexagon[2] = new Line(160, 160, 205, 238);
-	hexagon[3] = new Line(205, 238, 295, 238);
-	hexagon[4] = new Line(295, 238, 340, 160);
-	hexagon[5] = new Line(340, 160, 295, 82);
+	// For hexagon coordinates see:
+	// https://www.mathopenref.com/coordpolycalc.html
+	// hexagon center at (160, 250), radius = 100
+	hexagon.getPoints().addAll(new Double[] { 210.0, 163.0, 110.0, 163.0, 110.0,
+		163.0, 60.0, 250.0, 60.0, 250.0, 110.0, 337.0, 110.0, 337.0, 210.0,
+		337.0, 210.0, 337.0, 260.0, 250.0, 260.0, 250.0, 210.0, 163.0 });
 
-    }
+	resetAllShapesColour();
 
-    private void removeShapes() {
-	mainGroup.getChildren().clear();
-    }
-
-    private void resetShapeColour(Line[] shape) {
-	for (int i = 0; i < shape.length; i++) {
-	    shape[i].setStroke(colour);
-	}
     }
 
     private void resetAllShapesColour() {
-	resetShapeColour(rectangle);
-	resetShapeColour(triangle);
-	resetShapeColour(hexagon);
+	triangle.setFill(colour);
+	rectangle.setFill(colour);
+	hexagon.setFill(colour);
+
     }
 
 }
