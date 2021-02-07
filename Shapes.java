@@ -1,3 +1,4 @@
+
 /**
  * Shapes: An interface to change shapes and colours of the shapes.
  * @author (your name)
@@ -41,6 +42,7 @@ public class Shapes extends Application
 	TextField heightField = new TextField();
 	heightField.setMaxWidth(50);
 
+	// object that sets and displays shapes
 	shaper = new Shaper();
 
 	// create and configure a vertical container to hold all the components
@@ -74,6 +76,7 @@ public class Shapes extends Application
 	Button shapeButton = new Button();
 	shapeButton.setText("Render shape");
 
+//	gets text input
 	shapeButton.setOnAction(e -> {
 	    String textFieldValue = shapeTextField.getText().toLowerCase();
 	    if (textFieldValue.isEmpty()) {
@@ -96,9 +99,11 @@ public class Shapes extends Application
 	    }
 	});
 
+//	horizontal box that holds inputs textField and button
 	HBox shapeInputs = new HBox(shapeTextField, shapeButton);
 	shapeInputs.setAlignment(Pos.CENTER);
 
+//	vertical box to hold labels and inputs
 	VBox inputComponents = new VBox(10);
 	inputComponents.setAlignment(Pos.CENTER);
 	inputComponents.getChildren().addAll(shapeLabel, shapeLabel2, shapeInputs);
@@ -121,6 +126,7 @@ public class Shapes extends Application
 	Button colourButton = new Button();
 	colourButton.setText("Render colour");
 
+// gets text input
 	colourButton.setOnAction(e -> {
 	    String textFieldValue = colourTextField.getText().toLowerCase();
 	    if (textFieldValue.isEmpty()) {
@@ -138,9 +144,11 @@ public class Shapes extends Application
 	    }
 	});
 
+//	horizontal box that holds inputs textField and button
 	HBox colourInputs = new HBox(colourTextField, colourButton);
 	colourInputs.setAlignment(Pos.CENTER);
 
+//	vertical box that holds labels and inputs
 	VBox inputComponents = new VBox(10);
 	inputComponents.setAlignment(Pos.CENTER);
 	inputComponents.getChildren().addAll(colourLabel, colourLabel2,

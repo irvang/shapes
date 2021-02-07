@@ -1,3 +1,4 @@
+
 /**
  * Shaper 
  * 
@@ -9,17 +10,18 @@ import javafx.scene.shape.Line;
 
 public class Shaper
 {
+    // mainGroup holds the shape that is displayed.
     private Group mainGroup;
     private Color colour;
-    Line[] rectangle = new Line[4];
-    Line[] triangle = new Line[3];
-    Line[] hexagon = new Line[6];
+    private Line[] rectangle = new Line[4];
+    private Line[] triangle = new Line[3];
+    private Line[] hexagon = new Line[6];
 
     public Shaper() {
-	// initialise mainGroup
-	createShapes();
+	// initialise mainGroup and colour
 	mainGroup = new Group();
 	colour = Color.RED;
+	createShapes();
 	resetAllShapesColour();
 	setHexagon();
     }
@@ -35,9 +37,26 @@ public class Shaper
     }
 
     public void setHexagon() {
-	// https://www.mathopenref.com/coordpolycalc.html
+	// For coordinates see: https://www.mathopenref.com/coordpolycalc.html
 	removeShapes();
 	mainGroup.getChildren().addAll(hexagon);
+    }
+
+    public Group getMainGroup() {
+	return mainGroup;
+    }
+
+    public void setLinesColour(String newColour) {
+	if (newColour.equalsIgnoreCase("red")) {
+	    colour = Color.RED;
+	} else if (newColour.equalsIgnoreCase("green")) {
+	    colour = Color.GREEN;
+
+	} else if (newColour.equalsIgnoreCase("grey")
+		|| newColour.equalsIgnoreCase("gray")) {
+	    colour = Color.GREY;
+	}
+	resetAllShapesColour();
     }
 
     private void createShapes() {
@@ -60,12 +79,8 @@ public class Shaper
 
     }
 
-    public void removeShapes() {
+    private void removeShapes() {
 	mainGroup.getChildren().clear();
-    }
-
-    public Group getMainGroup() {
-	return mainGroup;
     }
 
     private void resetShapeColour(Line[] shape) {
@@ -74,23 +89,10 @@ public class Shaper
 	}
     }
 
-    public void resetAllShapesColour() {
+    private void resetAllShapesColour() {
 	resetShapeColour(rectangle);
 	resetShapeColour(triangle);
 	resetShapeColour(hexagon);
-    }
-
-    public void setLinesColour(String newColour) {
-	if (newColour.equalsIgnoreCase("red")) {
-	    colour = Color.RED;
-	} else if (newColour.equalsIgnoreCase("green")) {
-	    colour = Color.GREEN;
-
-	} else if (newColour.equalsIgnoreCase("grey")
-		|| newColour.equalsIgnoreCase("gray")) {
-	    colour = Color.GREY;
-	}
-	resetAllShapesColour();
     }
 
 }
