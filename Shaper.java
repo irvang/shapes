@@ -16,9 +16,6 @@ public class Shaper
     private Polygon rectangle = new Polygon();
     private Polygon triangle = new Polygon();
     private Polygon hexagon = new Polygon();
-    // private Line[] rectangle = new Line[4];
-    // private Line[] triangle = new Line[3];
-    // private Line[] hexagon = new Line[6];
 
     public Shaper() {
 	// initialise mainGroup and colour
@@ -56,7 +53,7 @@ public class Shaper
 	} else if (newColour.equalsIgnoreCase("grey")) {
 	    colour = Color.GREY;
 	}
-	resetAllShapesColour();
+	resetColour();
     }
 
     private void createShapes() {
@@ -74,11 +71,11 @@ public class Shaper
 		163.0, 60.0, 250.0, 60.0, 250.0, 110.0, 337.0, 110.0, 337.0, 210.0,
 		337.0, 210.0, 337.0, 260.0, 250.0, 260.0, 250.0, 210.0, 163.0 });
 
-	resetAllShapesColour();
+	resetColour();
 
     }
 
-    private void resetAllShapesColour() {
+    private void resetColour() {
 	triangle.setFill(colour);
 	rectangle.setFill(colour);
 	hexagon.setFill(colour);
