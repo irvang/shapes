@@ -139,7 +139,7 @@ public class Shapes extends Application
 		display.setText(
 			"ERROR: You have entered an invalid value. \nPlease enter a valid value\n(green, red, grey)");
 	    } else {
-		shaper.setLinesColour(textFieldValue);
+		shaper.setColour(textFieldValue);
 		display.setText("Here's your colour");
 	    }
 	});

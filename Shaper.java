@@ -44,7 +44,7 @@ public class Shaper
 	return mainGroup;
     }
 
-    public void setLinesColour(String newColour) {
+    public void setColour(String newColour) {
 	if (newColour.equalsIgnoreCase("red")) {
 	    colour = Color.RED;
 	} else if (newColour.equalsIgnoreCase("green")) {
